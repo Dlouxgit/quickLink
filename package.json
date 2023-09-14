@@ -51,6 +51,11 @@
           "command": "quickLink.openUrl",
           "when": "view == quickLink",
           "group": "inline"
+        },
+        {
+          "command": "quickLink.removeUrl",
+          "when": "view == quickLink",
+          "group": "inline"
         }
       ]
     },
@@ -62,6 +67,10 @@
       {
         "command": "quickLink.addUrl",
         "title": "添加快捷打开"
+      },
+      {
+        "command": "quickLink.removeUrl",
+        "title": "删除"
       }
     ],
     "configuration": {

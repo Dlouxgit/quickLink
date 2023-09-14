@@ -28,7 +28,15 @@ function openUrl({ url }) {
   vscode.commands.executeCommand("vscode.open", url);
 }
 
-async function addUrl(config, treeData) {
+async function removeUrl(config, _, { url }) {
+  await vscode.workspace.getConfiguration().update(
+    "quickLink.siteList",
+    config.siteList.filter(([_, siteUrl]) => siteUrl !== url),
+    true
+  );
+}
+
+async function addUrl(config, _) {
   let name = await vscode.window.showInputBox({
     ignoreFocusOut: true,
     password: false,
@@ -38,7 +46,7 @@ async function addUrl(config, treeData) {
   if (name === undefined || name === "") {
     return vscode.window.showInformationMessage("取消操作");
   }
-  
+
   let url = await vscode.window.showInputBox({
     ignoreFocusOut: true,
     password: false,
@@ -51,15 +59,9 @@ async function addUrl(config, treeData) {
     return vscode.window.showInformationMessage("取消操作");
   }
 
-  vscode.workspace
+  await vscode.workspace
     .getConfiguration()
     .update("quickLink.siteList", [...config.siteList, [name, url]], true);
-
-  treeData.root.children = [...config.siteList, [name, url]].map(
-    ([name, url]) => new TreeItem(name, url)
-  );
-
-  treeData._onDidChangeTreeData.fire();
   return;
 }
 
@@ -68,4 +70,5 @@ module.exports = {
   TreeData,
   openUrl,
   addUrl,
+  removeUrl,
 };
