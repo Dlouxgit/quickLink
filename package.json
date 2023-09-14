@@ -2,7 +2,7 @@
   "name": "quick-link-dl",
   "displayName": "Quick Link Dl",
   "description": "A quick navigation extension for vscode",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "author": "Dlouxgit",
   "publisher": "dloux",
   "packageManager": "pnpm@7.29.2",
@@ -78,8 +78,7 @@
       "properties": {
         "quickLink.siteList": {
           "type": "array",
-          "default": [
-          ],
+          "default": [],
           "description": "Your quickLink site list, e.g. [string, string]"
         }
       }
