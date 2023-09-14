@@ -8,10 +8,10 @@
 
 界面🌰：
 
-![example](assets/example.png)
+![example](https://static.seemusic.xyz/quick-link/example.jpg)
 
 使用：
 
-![Use](assets/use.gif)
+![Use](https://static.seemusic.xyz/quick-link/use.gif)
 
 **Enjoy!**
