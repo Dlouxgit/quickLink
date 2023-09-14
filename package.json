@@ -1,0 +1,104 @@
+{
+  "name": "quick-link-dl",
+  "displayName": "Quick Link Dl",
+  "description": "A quick navigation extension for vscode",
+  "version": "0.0.1",
+  "author": "Dlouxgit",
+  "publisher": "dloux",
+  "packageManager": "pnpm@7.29.2",
+  "engines": {
+    "vscode": "^1.59.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "quick",
+    "navigation"
+  ],
+  "activationEvents": [
+    "onView:quickLink"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "quickLink",
+          "title": "quickLink",
+          "icon": "./assets/logo.png"
+        }
+      ]
+    },
+    "views": {
+      "quickLink": [
+        {
+          "id": "quickLink",
+          "name": "quickLink"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "quickLink.addUrl",
+          "when": "view == quickLink",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "quickLink.openUrl",
+          "when": "view == quickLink",
+          "group": "inline"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "quickLink.openUrl",
+        "title": "快速打开"
+      },
+      {
+        "command": "quickLink.addUrl",
+        "title": "添加快捷打开"
+      }
+    ],
+    "configuration": {
+      "title": "quickLink",
+      "properties": {
+        "quickLink.siteList": {
+          "type": "array",
+          "default": [
+          ],
+          "description": "Your quickLink site list, e.g. [string, string]"
+        }
+      }
+    }
+  },
+  "icon": "assets/logo.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dlouxgit/quickLink"
+  },
+  "private": true,
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "pnpm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.59.0",
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "eslint": "^8.39.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^5.0.4",
+    "@vscode/test-electron": "^2.3.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "semantic-release": "^21.0.3"
+  }
+}
